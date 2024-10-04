@@ -8,18 +8,29 @@
  */
 #include <stdio.h>
 
-
+void skip_til_end_of_line()
+{
+     char ch;
+    scanf("%c", &ch);
+    while (ch != '\n') {
+        scanf("%c", &ch); 
+    }
+}
 int read_int_in_range (int low, int high)
 {
     int value;
-
+    int retscan;
     do {
         printf("Indique um valor inteiro [%d..%d] ", low, high);
-        scanf("%d", &value);
-        if (value < low || value > high) {
+        retscan = scanf("%d", &value);
+        if (retscan == 0) {
+            printf("Deve introduzir um valor inteiro\n");
+            skip_til_end_of_line();
+        }
+        else if (value < low || value > high) {
             printf("Valor fora do intervalo [%d..%d]\n", low, high);
         }
-    } while (value < low || value > high);
+    } while (retscan == 0 || value < low || value > high);
     return value;
 }
 
