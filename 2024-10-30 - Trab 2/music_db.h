@@ -76,7 +76,7 @@ typedef struct {
  * FUNÇÕES
  */
  
- 
+ void artist_print (artist_id_t id);
  
 /**
  * NÍVEL 1
